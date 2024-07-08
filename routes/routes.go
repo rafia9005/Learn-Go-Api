@@ -14,6 +14,8 @@ var Admin = middleware.AdminRole
 
 func SetupRouter(app *fiber.App){
   //routing
+  app.Post("/login", handler.Login)
+  app.Post("/register", handler.Register)
   app.Static("/", "./public")
   app.Get("/example", handler.GetExample)
   app.Get("/example/:id", handler.GetByIdExample)
