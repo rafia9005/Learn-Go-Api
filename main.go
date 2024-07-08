@@ -10,9 +10,16 @@ import (
 
 func main(){
   app := fiber.New()
+  // load dotenv
   godotenv.Load()
+
+  //database connect
   database.Connect()
+
+  //auto migration
   routes.AutoMigrate()
   routes.SetupRouter(app)
+
+  //port listen
   app.Listen(":3000")
 }
