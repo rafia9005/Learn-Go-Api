@@ -10,6 +10,7 @@ import (
   "github.com/go-playground/validator/v10"
 )
 
+//get default handler
 func GetExample(c  *fiber.Ctx) error {
  var example []entity.Example
 
@@ -38,6 +39,7 @@ func GetExample(c  *fiber.Ctx) error {
   })
 }
 
+//get by id handler
 func GetByIdExample(c *fiber.Ctx) error {
   exampleId := c.Params("id")
 
@@ -62,6 +64,7 @@ func GetByIdExample(c *fiber.Ctx) error {
   })
 }
 
+//create handler
 func CreateExample(c *fiber.Ctx) error {
   example := new(request.ExampleCreate)
 
@@ -98,6 +101,7 @@ func CreateExample(c *fiber.Ctx) error {
   })
 }
 
+//delete handler
 func DeleteExample(c *fiber.Ctx) error {
   exampleId := c.Params("id")
 
@@ -115,6 +119,7 @@ func DeleteExample(c *fiber.Ctx) error {
   })
 }
 
+//update handler
 func UpdateExample(c *fiber.Ctx) error {
   exampleRequest := new(request.UpdateExample)
 
