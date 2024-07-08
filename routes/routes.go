@@ -8,10 +8,12 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+//middleware Auth & Admin Role
 var Auth = middleware.Auth
 var Admin = middleware.AdminRole
 
 func SetupRouter(app *fiber.App){
+  //routing
   app.Static("/", "./public")
   app.Get("/example", handler.GetExample)
   app.Get("/example/:id", handler.GetByIdExample)
@@ -21,6 +23,7 @@ func SetupRouter(app *fiber.App){
 }
 
 func AutoMigrate(){
+  //run migration
   RunMigrate(&entity.Users{})
   RunMigrate(&entity.Example{})
 }
