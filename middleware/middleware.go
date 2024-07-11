@@ -20,7 +20,6 @@ func Auth(c *fiber.Ctx) error {
 	_, err := utils.VerifyToken(token)
 
 	claims, err := utils.DecodeToken(token)
-
 	if err != nil {
 		return c.Status(http.StatusUnauthorized).JSON(fiber.Map{
 			"message": "Unauthorized",
