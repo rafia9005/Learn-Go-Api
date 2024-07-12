@@ -5,16 +5,15 @@ import (
 	"Learn-Go-Api/middleware"
 	"Learn-Go-Api/model/entity"
 	"Learn-Go-Api/model/request"
-	"time"
-
 	"Learn-Go-Api/utils"
+	"time"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 )
 
-func Login(c *fiber.Ctx) error {     
+func Login(c *fiber.Ctx) error {
 	loginRequest := new(request.LoginRequest)
 
 	if err := c.BodyParser(loginRequest); err != nil {

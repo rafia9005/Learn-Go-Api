@@ -1,8 +1,8 @@
 package utils
 
 import (
-    "os"
 	"fmt"
+	"os"
 
 	"github.com/dgrijalva/jwt-go"
 )
@@ -12,7 +12,6 @@ var SecretKey string
 func GenerateToken(claims *jwt.MapClaims) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	webtoken, err := token.SignedString([]byte(SecretKey))
-
 	if err != nil {
 		return "", err
 	}
@@ -27,7 +26,6 @@ func VerifyToken(tokenString string) (*jwt.Token, error) {
 		}
 		return []byte(SecretKey), nil
 	})
-
 	if err != nil {
 		return nil, err
 	}
@@ -49,9 +47,9 @@ func DecodeToken(tokenString string) (jwt.MapClaims, error) {
 	return nil, fmt.Errorf("Invalid Token")
 }
 
-func init(){
-    SecretKey = os.Getenv("SECRET_KEY")
-    if(SecretKey == ""){
-        SecretKey = "n3^|e{jJ,|UmsT(ch42^yl8x^=7#zp}q"
-    }
+func init() {
+	SecretKey = os.Getenv("SECRET_KEY")
+	if SecretKey == "" {
+		SecretKey = "n3^|e{jJ,|UmsT(ch42^yl8x^=7#zp}q"
+	}
 }
